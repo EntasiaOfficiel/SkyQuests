@@ -1,0 +1,5 @@
+name: QuestCore
+description: The QuestCore to make quests
+version: 1.0
+main: fr.entasia.questcore.Main
+depend: [Libraries]
