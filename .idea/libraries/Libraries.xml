@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Libraries">
     <CLASSES>
-      <root url="jar://C:/Data/MCServer/1.12.2-Skript/plugins/Libraries.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libs/Libraries.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

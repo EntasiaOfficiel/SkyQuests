@@ -1,18 +1,24 @@
 package fr.entasia.questcore;
 
+import fr.entasia.questcore.tools.Listeners;
+import fr.entasia.questcore.tools.QCCmd;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
+	public static Main main;
+
 	@Override
 	public void onEnable() {
-		System.out.println("Activation du plugin QuestCore");
-		getServer().getPluginManager().registerEvents(new Utils(), this);
+		try{
+			main = this;
+			getCommand("questCore").setExecutor(new QCCmd());
+			getServer().getPluginManager().registerEvents(new Listeners(), this);
+			getLogger().info("Plugin activé !");
+		}catch(Throwable e){
+			e.printStackTrace();
+			getLogger().severe("Une erreur est survenue ! ARRET DU SERVEUR !");
+			getServer().shutdown();
+		}
 	}
-
-	@Override
-	public void onDisable() {
-		System.out.println("Désactivation du plugin QuestCore");
-	}
-
 }

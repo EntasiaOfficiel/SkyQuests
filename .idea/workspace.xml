@@ -6,7 +6,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7820051c-ea76-40fd-bc5e-667f19355541" name="Default Changelist" comment="" />
+    <list default="true" id="7820051c-ea76-40fd-bc5e-667f19355541" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/spigot_1_12_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/entasia/questcore/Listeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/QuestCore.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Libraries.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/spigot_1_12_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuestCore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/QuestCore.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/entasia/questcore/Common.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/entasia/questcore/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/entasia/questcore/Utils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +37,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1dPFdrmdqxM7HUGSwWYzY31tgkt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,8 +47,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../intellij/HubTools" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../libs/Libraries.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -58,14 +76,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="706" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1592382546829" />
-    <state x="666" y="260" key="FileChooserDialogImpl" timestamp="1593703129881">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="474" y="211" width="612" height="479" key="FileChooserDialogImpl" timestamp="1593711134005">
+      <screen x="0" y="25" width="1366" height="743" />
     </state>
     <state x="666" y="260" key="FileChooserDialogImpl/0.0.1920.1040/1920.26.1680.1010@0.0.1920.1040" timestamp="1593703129881" />
     <state x="666" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592381222623" />
-    <state x="440" y="93" key="SettingsEditor" timestamp="1592381402374">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="474" y="211" width="612" height="479" key="FileChooserDialogImpl/0.25.1366.743@0.25.1366.743" timestamp="1593711134005" />
+    <state x="313" y="25" width="1026" height="738" key="SettingsEditor" timestamp="1593711142361">
+      <screen x="0" y="25" width="1366" height="743" />
     </state>
     <state x="440" y="93" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592381402374" />
+    <state x="313" y="25" width="1026" height="738" key="SettingsEditor/0.25.1366.743@0.25.1366.743" timestamp="1593711142361" />
   </component>
 </project>
