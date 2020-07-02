@@ -19,15 +19,18 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1dPFdrmdqxM7HUGSwWYzY31tgkt" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ressources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../intellij/HubTools" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -36,18 +39,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\EnderKiller06\IdeaProjects\QuestCore\src\fr\entasia\questcore" />
     </key>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -67,9 +58,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="706" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1592382546829" />
-    <state x="666" y="260" key="FileChooserDialogImpl" timestamp="1592381222623">
+    <state x="666" y="260" key="FileChooserDialogImpl" timestamp="1593703129881">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="666" y="260" key="FileChooserDialogImpl/0.0.1920.1040/1920.26.1680.1010@0.0.1920.1040" timestamp="1593703129881" />
     <state x="666" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592381222623" />
     <state x="440" y="93" key="SettingsEditor" timestamp="1592381402374">
       <screen x="0" y="0" width="1920" height="1040" />
