@@ -1,6 +1,6 @@
 package fr.entasia.questcore;
 
-import fr.entasia.questcore.tools.Listeners;
+import fr.entasia.questcore.tools.APIListeners;
 import fr.entasia.questcore.tools.QCCmd;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,7 +13,7 @@ public class Main extends JavaPlugin {
 		try{
 			main = this;
 			getCommand("questCore").setExecutor(new QCCmd());
-			getServer().getPluginManager().registerEvents(new Listeners(), this);
+			getServer().getPluginManager().registerEvents(new APIListeners(), this);
 			getLogger().info("Plugin activé !");
 		}catch(Throwable e){
 			e.printStackTrace();
