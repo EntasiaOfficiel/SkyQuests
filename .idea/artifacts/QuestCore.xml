@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="QuestCore">
-    <output-path>C:/Data/MCServer/1.12.2-Skript/plugins</output-path>
-    <root id="archive" name="QuestCore.jar">
-      <element id="dir-copy" path="$PROJECT_DIR$/ressources" />
-      <element id="module-output" name="QuestCore" />
-    </root>
-  </artifact>
-</component>
