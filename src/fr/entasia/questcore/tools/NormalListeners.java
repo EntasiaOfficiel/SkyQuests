@@ -4,7 +4,7 @@ import fr.entasia.apis.regionManager.api.Region;
 import fr.entasia.apis.regionManager.api.RegionManager;
 import fr.entasia.apis.regionManager.events.RegionEnterEvent;
 import fr.entasia.apis.utils.ItemUtils;
-import fr.entasia.questcore.Utils;
+import fr.entasia.questcore.api.QuestUtils;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
@@ -34,7 +34,7 @@ public class NormalListeners implements Listener {
 			int progress;
 			switch(name){
 				case "Offier":{
-					ConfigurationSection sec = Utils.getSection(p, 0);
+					ConfigurationSection sec = QuestUtils.getSection(p, 0);
 					progress = sec.getInt("progress");
 					if(progress==0){
 						p.sendMessage("§cAu rapport, soldat ! On vient de me signaler la présence d'une base militaire ennemie !");
@@ -50,7 +50,7 @@ public class NormalListeners implements Listener {
 					}else if(progress==3){
 						p.sendMessage("§cBravo soldat ! La base est détruite, voici ta récompense :");
 						ItemUtils.giveOrDrop(p, new ItemStack(Material.DIAMOND, 4));
-						Utils.delSection(p, 0);
+						QuestUtils.delSection(p, 0);
 						// TODO coodown de quête
 					}
 					break;
@@ -64,13 +64,13 @@ public class NormalListeners implements Listener {
 	@EventHandler
 	public void a(RegionEnterEvent e){
 		if(e.getRegion()==zoneSecrete){
-			ConfigurationSection sec = Utils.getSection(e.getPlayer(), 0);
+			ConfigurationSection sec = QuestUtils.getSection(e.getPlayer(), 0);
 			if(sec.getInt("progress")==1||sec.getInt("progress")==2){
 				Player p = e.getPlayer();
-				if(Utils.getQuestItems(p, 0, 0).size()==0){
+				if(QuestUtils.getQItem(p, 0, 0).size()==0){
 					p.sendMessage("§cBien joué ! Tu as trouvé la base militaire ! Détruit la maintenant ! (pose la tnt)");
 					ItemStack item = new ItemStack(Material.TNT);
-					Utils.markQuestItem(p, item, 0, 0);
+					QuestUtils.markQItem(item, 0, 0);
 					p.getInventory().addItem(item);
 					sec.set("progress", 2);
 				}
@@ -80,11 +80,14 @@ public class NormalListeners implements Listener {
 
 	@EventHandler
 	public void a(BlockPlaceEvent e){
-		if(e.getBlock().getType()==Material.TNT&&Utils.getItemID(e.getItemInHand(), 0)==0){
-			ConfigurationSection sec = Utils.getSection(e.getPlayer(), 0);
-			sec.set("progress", 3);
-			// TODO explosion feux d'artifice
-			e.getPlayer().sendMessage("§c§lBOUM ! §cTu as réussi soldat ! Reviens vite pour voir pour ta récompense !");
+		if(e.getBlock().getType()==Material.TNT&& QuestUtils.getQItemID(e.getItemInHand(), 0)==0){
+			ConfigurationSection sec = QuestUtils.getSection(e.getPlayer(), 0);
+			if(sec.getInt("progress")==1||sec.getInt("progress")==2){
+				sec.set("progress", 3);
+				QuestUtils.delQItem(e.getPlayer(), 0, 0);
+				// TODO explosion feux d'artifice
+				e.getPlayer().sendMessage("§c§lBOUM ! §cTu as réussi soldat ! Reviens vite pour voir pour ta récompense !");
+			}
 		}
 	}
 }
