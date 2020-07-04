@@ -2,6 +2,7 @@ package fr.entasia.questcore.api;
 
 import fr.entasia.apis.nbt.ItemNBT;
 import fr.entasia.apis.nbt.NBTComponent;
+import fr.entasia.apis.nbt.NBTTypes;
 import fr.entasia.questcore.Main;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -36,9 +37,9 @@ public class QuestUtils {
 
 	public static int getQItemID(ItemStack item, int questID) {
 		NBTComponent nbt = ItemNBT.getNBTSafe(item);
-		if ("1".equals(nbt.getKeyString("quest"))) {
-			if (questID == -1 || Integer.parseInt(nbt.getKeyStringSafe("questid")) == questID) {
-				return Integer.parseInt(nbt.getKeyStringSafe("itemid"));
+		if ("1".equals(nbt.getValue(NBTTypes.String, "quest"))) {
+			if (questID != -1 || (int)nbt.getValue(NBTTypes.Int, "questid") == questID) {
+				return (int) nbt.getValue(NBTTypes.Int, "itemid");
 			}
 		}
 		return -1;
