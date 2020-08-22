@@ -1,4 +1,4 @@
-package fr.entasia.questcore.api;
+package fr.entasia.questcore.utils;
 
 import fr.entasia.questcore.Main;
 import org.bukkit.scheduler.BukkitRunnable;
