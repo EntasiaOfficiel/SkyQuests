@@ -1,6 +1,7 @@
-name: QuestCore
-description: The QuestCore to make quests (logic)
+name: SkyQuests
 version: '-1'
 main: fr.entasia.questcore.Main
 depend: [Libraries]
 author: iTrooz_
+commands:
+  questcore:

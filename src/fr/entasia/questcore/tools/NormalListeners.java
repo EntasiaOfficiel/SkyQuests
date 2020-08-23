@@ -15,6 +15,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -56,7 +57,7 @@ public class NormalListeners implements Listener {
 					}
 					break;
 				}
-				case "Combatant":{
+				case "Combattant":{
 					QuestSection qs = QuestUtils.getSection(p, Quests.MINEURS);
 					progress = qs.getProgress();
 					if(progress==0){
@@ -96,8 +97,8 @@ public class NormalListeners implements Listener {
 				}
 			}
 		}else if(e.getRegion()==Regions.MINE_PVE.region){
-			QuestSection qs = QuestUtils.getSection(p, Quests.MINEURS);
 			p.setHealth(e.getPlayer().getMaxHealth());
+			QuestSection qs = QuestUtils.getSection(p, Quests.MINEURS);
 			if(qs.getProgress()==1){
 				p.sendMessage("§cTu entres dans une zone dangereuse, attention ! Les mineurs se sont peut-être retrouvés piégés ici ?");
 			}
@@ -106,7 +107,17 @@ public class NormalListeners implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGH)
 	public void a(EntityDamageByEntityEvent e){
-		if(e.getEntity() instanceof Player && !(e.getDamager() instanceof Player)){
+		if(!(e.getEntity() instanceof Player && e.getDamager() instanceof Player)){
+			if(RegionManager.getRegionsAt(e.getEntity().getLocation()).contains(Regions.MINE_PVE.region)){
+				e.setCancelled(false);
+			}
+		}
+	}
+
+	@EventHandler
+	public void a(EntityTargetEvent e){
+		e.getEntity().sou
+		if(!(e.getEntity() instanceof Player && e.getDamager() instanceof Player)){
 			if(RegionManager.getRegionsAt(e.getEntity().getLocation()).contains(Regions.MINE_PVE.region)){
 				e.setCancelled(false);
 			}
