@@ -20,7 +20,7 @@ public class Main extends JavaPlugin {
 			main = this;
 			world = Bukkit.getWorlds().get(0);
 			saveResource("database.db", false);
-			sqlite = new SQLConnection().sqlite("plugins/"+getName()+"/database.db");
+			sqlite = SQLConnection.sqlite("plugins/"+getName()+"/database.db");
 
 			getCommand("questcore").setExecutor(new QCCmd());
 

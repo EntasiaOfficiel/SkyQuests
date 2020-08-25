@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class QuestUtils {
 
 
-	public static void createSection(String name, Quests quest) {
-		Main.sqlite.fastUpdate("INSERT INTO actives (player, id), VALUES(?, ?)", name, quest.id);
+	private static void createSection(String name, Quests quest) {
+		Main.sqlite.fastUpdate("INSERT INTO actives (player, id, when) VALUES(?, ?, ?)", name, quest.id, System.currentTimeMillis());
 	}
 
 	public static void delSection(String name, Quests quest) {
@@ -26,21 +26,22 @@ public class QuestUtils {
 
 	public static int getProgress(String name, Quests quest){
 		try{
-			ResultSet rs = Main.sqlite.fastSelectUnsafe("SELECT progress FROM actives player=? AND WHERE id=?", name, quest.id);
+			ResultSet rs = Main.sqlite.fastSelectUnsafe("SELECT progress FROM actives WHERE player=? AND id=?", name, quest.id);
 			if(rs.next()){
-				return rs.getInt(0);
+				return rs.getInt(1);
+			}else{
+				createSection(name, quest);
+				return 0;
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
+			return -1;
 		}
-		return -1;
 	}
 
 	public static void setProgress(String name, Quests quest, int progress){
 		Main.sqlite.fastUpdate("UPDATE actives SET progress=? WHERE player=? AND id=?", progress, name, quest.id);
 	}
-
-
 
 	public static void markQItem(ItemStack item, int questID, int itemID){
 		ItemNBT.addNBT(item, new NBTComponent(String.format("{quest:1,questid:%d,itemid:%d}", questID, itemID)));
@@ -72,7 +73,7 @@ public class QuestUtils {
 		}
 	}
 
-	public static void delAllQItem(Player p, int questID){
+	public static void delAllQItems(Player p, int questID){
 		for(ItemStack item : p.getInventory().getContents()){
 			NBTComponent nbt = ItemNBT.getNBTSafe(item);
 			if(nbt.getValue(NBTTypes.String, "quest").equals("1")) {
