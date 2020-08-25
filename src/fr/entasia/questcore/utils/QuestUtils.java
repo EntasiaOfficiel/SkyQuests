@@ -8,29 +8,40 @@ import fr.entasia.questcore.utils.enums.Quests;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class QuestUtils {
 
-	public static QuestSection getSection(Player p, Quests quest) {
-		return getSection(p.getName(), quest);
-	}
-	public static QuestSection getSection(String name, Quests quest) {
-		QuestSection qs = new QuestSection();
-		qs.sec = Main.main.getConfig().getConfigurationSection("quests."+name+"."+quest.id);
-		if(qs.sec==null){ // why c'était commenté ?
-			qs.sec = Main.main.getConfig().createSection("quests."+name+"."+quest.id);
-		}
-		return qs;
-	}
-
-	public static void delSection(Player p, Quests quest) {
-		delSection(p.getName(), quest);
+	public static void createSection(String name, Quests quest) {
+		Main.main.getConfig().set("quests." + name + "." + quest.id, null);
 	}
 
 	public static void delSection(String name, Quests quest) {
-		Main.main.getConfig().set("quests." + name + "." + quest.id, null);
+		Main.sqlite.fastUpdate("DELETE FROM progress WHERE player=? AND WHERE id=?", name, quest.id);
 	}
+
+
+	public static int getProgress(String name, Quests quest){
+		try{
+			ResultSet rs = Main.sqlite.fastSelectUnsafe("SELECT progress FROM actives player=? AND WHERE id=?", name, quest.id);
+			if(rs.next()){
+				return rs.getInt(0);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public static void setProgress(String name, Quests quest, int progress){
+		Main.sqlite.fastUpdate("UPDATE actives SET progress=? WHERE player=? AND id=?", progress, name, quest.id);
+	}
+
+
+
+
 
 	public static void markQItem(ItemStack item, int questID, int itemID){
 		ItemNBT.addNBT(item, new NBTComponent(String.format("{quest:1,questid:%d,itemid:%d}", questID, itemID)));

@@ -1,8 +1,8 @@
 package fr.entasia.questcore;
 
-import fr.entasia.questcore.tools.NormalListeners;
+import fr.entasia.apis.sql.SQLConnection;
+import fr.entasia.questcore.tools.Listeners;
 import fr.entasia.questcore.tools.QCCmd;
-import fr.entasia.questcore.utils.SaveTask;
 import fr.entasia.questcore.utils.enums.Regions;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -12,18 +12,19 @@ public class Main extends JavaPlugin {
 
 	public static Main main;
 	public static World world;
+	public static SQLConnection sqlite;
 
 	@Override
 	public void onEnable() {
 		try{
 			main = this;
 			world = Bukkit.getWorlds().get(0);
+			saveResource("database.db", false);
+			sqlite = new SQLConnection().sqlite("plugins/"+getName()+"/database.db");
 
 			getCommand("questcore").setExecutor(new QCCmd());
 
-			getServer().getPluginManager().registerEvents(new NormalListeners(), this);
-
-			new SaveTask().runTaskTimer(this, 0 ,20*60*2);
+			getServer().getPluginManager().registerEvents(new Listeners(), this);
 
 			Regions.init();
 
