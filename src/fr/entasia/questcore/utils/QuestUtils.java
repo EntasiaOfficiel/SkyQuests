@@ -14,12 +14,13 @@ import java.util.ArrayList;
 
 public class QuestUtils {
 
+
 	public static void createSection(String name, Quests quest) {
-		Main.main.getConfig().set("quests." + name + "." + quest.id, null);
+		Main.sqlite.fastUpdate("INSERT INTO actives (player, id), VALUES(?, ?)", name, quest.id);
 	}
 
 	public static void delSection(String name, Quests quest) {
-		Main.sqlite.fastUpdate("DELETE FROM progress WHERE player=? AND WHERE id=?", name, quest.id);
+		Main.sqlite.fastUpdate("DELETE FROM actives WHERE player=? AND WHERE id=?", name, quest.id);
 	}
 
 
@@ -38,8 +39,6 @@ public class QuestUtils {
 	public static void setProgress(String name, Quests quest, int progress){
 		Main.sqlite.fastUpdate("UPDATE actives SET progress=? WHERE player=? AND id=?", progress, name, quest.id);
 	}
-
-
 
 
 

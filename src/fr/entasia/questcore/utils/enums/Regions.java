@@ -7,7 +7,7 @@ import fr.entasia.questcore.Main;
 
 public enum Regions {
 	BASE_SECRETE("base_secrete", new BasicLocation(5, 5, 5), new BasicLocation(6, 6, 6)),
-	MINE_PVE("mine_pve", new BasicLocation(213, 150, -12), new BasicLocation(176, 113, 22)),
+	MINE_PVE("mine_pve", new BasicLocation(161, 145, 25), new BasicLocation(207, 123, -13)),
 
 
 	;
