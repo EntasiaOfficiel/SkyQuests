@@ -121,10 +121,12 @@ public class Listeners implements org.bukkit.event.Listener {
 	}
 
 	@EventHandler(priority = EventPriority.HIGH)
-	public static void antiSpawn(EntitySpawnEvent e){
+	public static void plsSpawn(EntitySpawnEvent e){
 		if(e.getLocation().getWorld()== Main.world){
 			if (RegionManager.getRegionsAt(e.getLocation()).contains(Regions.MINE_PVE.region)) {
-				e.setCancelled(false);
+				if(e.getEntityType() == EntityType.ZOMBIE){
+					e.setCancelled(false);
+				}
 			}
 		}
 	}

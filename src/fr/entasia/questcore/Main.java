@@ -8,6 +8,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+
 public class Main extends JavaPlugin {
 
 	public static Main main;
@@ -19,8 +21,10 @@ public class Main extends JavaPlugin {
 		try{
 			main = this;
 			world = Bukkit.getWorlds().get(0);
-			saveResource("database.db", false);
-			sqlite = SQLConnection.sqlite("plugins/"+getName()+"/database.db");
+			if(!new File(getDataFolder(), "database.db").exists()){
+				saveResource("database.db", false);
+			}
+			sqlite = SQLConnection.sqlite(getDataFolder(), "database.db");
 
 			getCommand("questcore").setExecutor(new QCCmd());
 
