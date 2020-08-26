@@ -134,8 +134,10 @@ public class Listeners implements org.bukkit.event.Listener {
 
 	@EventHandler
 	public void a(EntityPathfindEvent e) {
-		if (!RegionManager.getRegionsAt(e.getLoc()).contains(Regions.MINE_PVE.region)) {
-			e.setCancelled(true);
+		if(e.getLoc().getWorld()==Main.world){
+			if (!RegionManager.getRegionsAt(e.getLoc()).contains(Regions.MINE_PVE.region)) {
+				e.setCancelled(true);
+			}
 		}
 	}
 
