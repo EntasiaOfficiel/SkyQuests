@@ -16,7 +16,7 @@ public class QuestUtils {
 
 
 	private static void createSection(String name, Quests quest) {
-		Main.sqlite.fastUpdate("INSERT INTO actives (player, id, when) VALUES(?, ?, ?)", name, quest.id, System.currentTimeMillis());
+		Main.sqlite.fastUpdate("INSERT INTO actives (player, id, `when`) VALUES(?, ?, ?)", name, quest.id, System.currentTimeMillis());
 	}
 
 	public static void delSection(String name, Quests quest) {
