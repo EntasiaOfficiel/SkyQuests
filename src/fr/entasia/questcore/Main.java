@@ -24,7 +24,7 @@ public class Main extends JavaPlugin {
 			if(!new File(getDataFolder(), "database.db").exists()){
 				saveResource("database.db", false);
 			}
-			sqlite = SQLConnection.sqlite(getDataFolder(), "database.db");
+			sqlite = new SQLConnection().sqlite(getDataFolder(), "database.db");
 
 			getCommand("questcore").setExecutor(new QCCmd());
 
