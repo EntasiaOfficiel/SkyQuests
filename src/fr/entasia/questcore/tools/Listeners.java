@@ -94,10 +94,10 @@ public class Listeners implements org.bukkit.event.Listener {
 				if(QuestUtils.getQItem(p, Quests.BASE_SECRETE, 0).size()==0){
 					p.sendMessage("§cBien joué ! Tu as trouvé la base militaire ! Détruit la maintenant ! (pose la tnt)");
 					ItemStack item = new ItemStack(Material.TNT);
-					QuestUtils.markQItem(item, 0, 0);
+					QuestUtils.markQItem(item, Quests.BASE_SECRETE, 0);
 					p.getInventory().addItem(item);
-					QuestUtils.setProgress(p.getName(), Quests.MINEURS, 2);
 				}
+				QuestUtils.setProgress(p.getName(), Quests.MINEURS, 2);
 			}
 		}else if(e.getRegion()==Regions.MINE_PVE.region){
 			p.setHealth(e.getPlayer().getMaxHealth());
@@ -145,7 +145,7 @@ public class Listeners implements org.bukkit.event.Listener {
 	public void a(BlockPlaceEvent e) {
 		if (e.getBlock().getType() == Material.TNT && QuestUtils.getQItemID(e.getItemInHand(), Quests.BASE_SECRETE) == 0) {
 			int progress = QuestUtils.getProgress(e.getPlayer().getName(), Quests.MINEURS);
-			if (progress == 1 || progress == 2) {
+			if (progress == 2) {
 				QuestUtils.setProgress(e.getPlayer().getName(), Quests.MINEURS, 3);
 				QuestUtils.delQItem(e.getPlayer(), Quests.BASE_SECRETE, 0);
 				InstantFirework.explode(e.getPlayer().getLocation(), FireworkEffect.builder().withColor(Color.BLUE, Color.GREEN).build());

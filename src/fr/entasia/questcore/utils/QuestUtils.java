@@ -43,8 +43,8 @@ public class QuestUtils {
 		Main.sqlite.fastUpdate("UPDATE actives SET progress=? WHERE player=? AND id=?", progress, name, quest.id);
 	}
 
-	public static void markQItem(ItemStack item, int questID, int itemID){
-		ItemNBT.addNBT(item, new NBTComponent(String.format("{quest:1,questid:%d,itemid:%d}", questID, itemID)));
+	public static void markQItem(ItemStack item, Quests quest, int itemID){
+		ItemNBT.addNBT(item, new NBTComponent(String.format("{quest:1,questid:%d,itemid:%d}", quest.id, itemID)));
 	}
 
 	public static int getQItemID(ItemStack item, Quests quest) {
