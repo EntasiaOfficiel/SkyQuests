@@ -51,8 +51,6 @@ public class QuestUtils {
 
 	public static int getQItemID(ItemStack item, Quests quest) {
 		NBTComponent nbt = ItemNBT.getNBTSafe(item);
-		System.out.println(nbt);
-		System.out.println(nbt.getValue(NBTTypes.Boolean, "quest"));
 		if((boolean) nbt.getValue(NBTTypes.Boolean, "quest")){
 			if (quest.id != -1 || (int)nbt.getValue(NBTTypes.Int, "questid") == quest.id) {
 				return (int) nbt.getValue(NBTTypes.Int, "itemid");
