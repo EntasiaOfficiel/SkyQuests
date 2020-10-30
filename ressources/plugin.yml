@@ -1,4 +1,5 @@
 name: SkyQuests
+api-version: '1.15'
 version: '-1'
 main: fr.entasia.questcore.Main
 depend: [Libraries]
